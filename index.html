@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<hmtl>
+    <head>
+        <meta charset="UTF-8">
+        <title>Rock Paper Scissors</title>
+    </head>
+    <body>
+        <script>
+            function computerPlay () {
+                let num = Math.floor(Math.random() * 3);
+
+                let computerSelection;
+
+                if (num === 0) {
+                    computerSelection = "Rock";
+                }
+
+                else if (num === 1) {
+                    computerSelection = "Paper";
+                }
+
+                else {
+                    computerSelection = "Scissors";
+                }
+
+                console.log(computerSelection);
+            }
+
+            computerPlay();
+
+        </script>
+    </body>
+</hmtl>
