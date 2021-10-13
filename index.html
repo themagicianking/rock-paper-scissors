@@ -1,16 +1,27 @@
 <!DOCTYPE HTML>
 <hmtl>
+
     <head>
         <meta charset="UTF-8">
         <title>Rock Paper Scissors</title>
     </head>
+    
     <body>
         <script>
 
+            //declaring variable needed for computerPlay.
+
+            let computerSelection;
+
+            //start of function computerPlay, which randomly generates a selection for the computer.
+
             function computerPlay () {
+
+                //randomly generating numbers from 0-2 to convert them into rock, paper, or scissors.
+
                 let num = Math.floor(Math.random() * 3);
 
-                let computerSelection;
+                //if statements to change the numbers into strings of either rock, paper, or scissors.
 
                 if (num === 0) {
                     computerSelection = "Rock";
@@ -24,13 +35,22 @@
                     computerSelection = "Scissors";
                 }
 
+                //returning the computer's selection.
+
                 return computerSelection;
             }
 
+            //end of function computerPlay.
+
+            //declaring variables to be used in upcoming functions.
+
             let message;
             let playerInput;
+            let whoWon;
 
-            function playRound (computerSelection) {
+            //start of function playRound, which prompts the player to make a choice, calls the function computerPlay, and generates a message depending on who won.
+
+            function playRound () {
                 // The Player inputs rock, paper, or scissors.
 
                 playerInput = prompt("Hello, player! Please pick Rock, Paper, or Scissors.");
@@ -45,64 +65,136 @@
 
                 let playerSelection = newFirst + newLast;
 
-                //If statements here determining who wins each round. Determines which message is returned.
+                //Retrieving the computer's selection with the computerPlay function.
 
                 computerPlay();
+
+                //If statements here determining who wins each round. Determines which message is generated.
 
                 if (playerSelection === "Rock") {
                     if (computerSelection === "Rock") {
                         message = "You've tied! Rock and Rock tie.";
+                        whoWon = "Tie";
                     }
                     else if (computerSelection === "Paper") {
                         message = "You lose! Paper beats rock.";
+                        whoWon = "Computer";
                     }
                     else {
                         message = "You win! Rock beats scissors.";
+                        whoWon = "User";
                     }
                 }
 
                 else if (playerSelection === "Paper") {
                     if (computerSelection === "Rock") {
                         message = "You win! Paper beats rock.";
+                        whoWon = "User";
                     }
                     else if (computerSelection === "Paper") {
                         message = "You've tied! Paper and Paper tie.";
+                        whoWon = "Tie";
                     }
                     else {
                         message = "You lose! Scissors beats paper.";
+                        whoWon = "Computer";
                     }
                 }
 
                 else if (playerSelection === "Scissors") {
                     if (computerSelection === "Rock") {
                         message = "You lose! Rock beats Scissors.";
+                        whoWon = "Computer";
                     }
                     else if (computerSelection === "Paper") {
                         message = "You win! Scissors beats Paper.";
+                        whoWon = "User";
                     }
                     else {
                         message = "You've tied! Scissors and Scissors tie."
+                        whoWon = "Tie";
                     }
                 }
 
                 else {
                     message = "Did you spell something wrong?";
+                    whoWon = "Tie";
                 }
 
-                //Return the message.
+                //Alerts who won after each round to the player.
 
-                return message;
+                alert(message);
+
+                //Returns who won.
+
+                return whoWon;
 
             }
+
+            //end of function playRound.
+
+            //start of function game, which will iterate through five rounds of play and tell the player who won.
 
             function game () {
+
+                //declaring the variables needed to store the player and computer's score.
+
+                let userScore = 0;
+                let computerScore = 0;
+
+                //start of points, a function for adding up the new score.
+
+                function points () {
+                    if (whoWon === "User") {
+                        userScore = userScore + 1;
+                    }
+                    else if (whoWon === "Computer") {
+                        computerScore = computerScore + 1;
+                    }
+
+                    //returning the new score for both player and computer.
+
+                    return [userScore, computerScore];
+                }
+
+                //end of points.
+
+                //start of function finalResult, which will alert the player of who won all five rounds.
+
+                function finalResult () {
+                    if (userScore > computerScore) {
+                        alert("YOU WON!");
+                    }
+                    else if (computerScore > userScore) {
+                        alert("You lost :(");
+                    }
+                    else {
+                        alert("Wow, you tied! That's unlikely.");
+                    }
+                }
+
+                //end of finalResult.
+
+                //starting five rounds with a point tally between each and ending with alerting the player of the final result.
+
                 playRound();
+                points();
+                console.log(userScore);
                 playRound();
+                points();
                 playRound();
+                points();
                 playRound();
+                points();
                 playRound();
+                points();
+                finalResult();
 
             }
+
+            //end of function game.
+
+            game();
 
         </script>
     </body>
