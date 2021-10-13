@@ -6,6 +6,7 @@
     </head>
     <body>
         <script>
+
             function computerPlay () {
                 let num = Math.floor(Math.random() * 3);
 
@@ -23,10 +24,85 @@
                     computerSelection = "Scissors";
                 }
 
-                console.log(computerSelection);
+                return computerSelection;
             }
 
-            computerPlay();
+            let message;
+            let playerInput;
+
+            function playRound (computerSelection) {
+                // The Player inputs rock, paper, or scissors.
+
+                playerInput = prompt("Hello, player! Please pick Rock, Paper, or Scissors.");
+                
+                //The program converts the string so the first letter is uppercase and the rest are lowercase.
+
+                let firstLetter = playerInput.charAt(0);
+                let lastLetters = playerInput.slice(1);
+
+                let newFirst = firstLetter.toUpperCase();
+                let newLast = lastLetters.toLowerCase();
+
+                let playerSelection = newFirst + newLast;
+
+                //If statements here determining who wins each round. Determines which message is returned.
+
+                computerPlay();
+
+                if (playerSelection === "Rock") {
+                    if (computerSelection === "Rock") {
+                        message = "You've tied! Rock and Rock tie.";
+                    }
+                    else if (computerSelection === "Paper") {
+                        message = "You lose! Paper beats rock.";
+                    }
+                    else {
+                        message = "You win! Rock beats scissors.";
+                    }
+                }
+
+                else if (playerSelection === "Paper") {
+                    if (computerSelection === "Rock") {
+                        message = "You win! Paper beats rock.";
+                    }
+                    else if (computerSelection === "Paper") {
+                        message = "You've tied! Paper and Paper tie.";
+                    }
+                    else {
+                        message = "You lose! Scissors beats paper.";
+                    }
+                }
+
+                else if (playerSelection === "Scissors") {
+                    if (computerSelection === "Rock") {
+                        message = "You lose! Rock beats Scissors.";
+                    }
+                    else if (computerSelection === "Paper") {
+                        message = "You win! Scissors beats Paper.";
+                    }
+                    else {
+                        message = "You've tied! Scissors and Scissors tie."
+                    }
+                }
+
+                else {
+                    message = "Did you spell something wrong?";
+                }
+
+                //Return the message.
+
+                return message;
+
+            }
+
+            function game () {
+                playRound();
+                playRound();
+                playRound();
+                playRound();
+                playRound();
+
+            }
 
         </script>
     </body>
