@@ -9,19 +9,11 @@
     <body>
         <script>
 
-            //declaring variable needed for computerPlay.
-
             let computerSelection;
-
-            //start of function computerPlay, which randomly generates a selection for the computer.
 
             function computerPlay () {
 
-                //randomly generating numbers from 0-2 to convert them into rock, paper, or scissors.
-
                 let num = Math.floor(Math.random() * 3);
-
-                //if statements to change the numbers into strings of either rock, paper, or scissors.
 
                 if (num === 0) {
                     computerSelection = "Rock";
@@ -35,27 +27,16 @@
                     computerSelection = "Scissors";
                 }
 
-                //returning the computer's selection.
-
                 return computerSelection;
             }
-
-            //end of function computerPlay.
-
-            //declaring variables to be used in upcoming functions.
 
             let message;
             let playerInput;
             let whoWon;
 
-            //start of function playRound, which prompts the player to make a choice, calls the function computerPlay, and generates a message depending on who won.
-
             function playRound () {
-                // The Player inputs rock, paper, or scissors.
 
                 playerInput = prompt("Hello, player! Please pick Rock, Paper, or Scissors.");
-                
-                //The program converts the string so the first letter is uppercase and the rest are lowercase.
 
                 let firstLetter = playerInput.charAt(0);
                 let lastLetters = playerInput.slice(1);
@@ -65,11 +46,7 @@
 
                 let playerSelection = newFirst + newLast;
 
-                //Retrieving the computer's selection with the computerPlay function.
-
                 computerPlay();
-
-                //If statements here determining who wins each round. Determines which message is generated.
 
                 if (playerSelection === "Rock") {
                     if (computerSelection === "Rock") {
@@ -121,28 +98,16 @@
                     whoWon = "Tie";
                 }
 
-                //Alerts who won after each round to the player.
-
                 alert(message);
-
-                //Returns who won.
 
                 return whoWon;
 
             }
 
-            //end of function playRound.
-
-            //start of function game, which will iterate through five rounds of play and tell the player who won.
-
             function game () {
-
-                //declaring the variables needed to store the player and computer's score.
 
                 let userScore = 0;
                 let computerScore = 0;
-
-                //start of points, a function for adding up the new score.
 
                 function points () {
                     if (whoWon === "User") {
@@ -152,14 +117,8 @@
                         computerScore = computerScore + 1;
                     }
 
-                    //returning the new score for both player and computer.
-
                     return [userScore, computerScore];
                 }
-
-                //end of points.
-
-                //start of function finalResult, which will alert the player of who won all five rounds.
 
                 function finalResult () {
                     if (userScore > computerScore) {
@@ -172,10 +131,6 @@
                         alert("Wow, you tied! That's unlikely.");
                     }
                 }
-
-                //end of finalResult.
-
-                //starting five rounds with a point tally between each and ending with alerting the player of the final result.
 
                 playRound();
                 points();
@@ -191,8 +146,6 @@
                 finalResult();
 
             }
-
-            //end of function game.
 
             game();
 
