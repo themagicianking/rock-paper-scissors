@@ -25,67 +25,7 @@ let whoWon;
 
 function playRound () {
 
-    playerInput = prompt("Hello, player! Please pick Rock, Paper, or Scissors.");
-
-    let firstLetter = playerInput.charAt(0);
-    let lastLetters = playerInput.slice(1);
-
-    let newFirst = firstLetter.toUpperCase();
-    let newLast = lastLetters.toLowerCase();
-
-    let playerSelection = newFirst + newLast;
-
     computerPlay();
-
-    if (playerSelection === "Rock") {
-        if (computerSelection === "Rock") {
-            message = "You've tied! Rock and Rock tie.";
-            whoWon = "Tie";
-        }
-        else if (computerSelection === "Paper") {
-            message = "You lose! Paper beats rock.";
-            whoWon = "Computer";
-        }
-        else {
-            message = "You win! Rock beats scissors.";
-            whoWon = "User";
-        }
-    }
-
-    else if (playerSelection === "Paper") {
-        if (computerSelection === "Rock") {
-            message = "You win! Paper beats rock.";
-            whoWon = "User";
-        }
-        else if (computerSelection === "Paper") {
-            message = "You've tied! Paper and Paper tie.";
-            whoWon = "Tie";
-        }
-        else {
-            message = "You lose! Scissors beats paper.";
-            whoWon = "Computer";
-        }
-    }
-
-    else if (playerSelection === "Scissors") {
-        if (computerSelection === "Rock") {
-            message = "You lose! Rock beats Scissors.";
-            whoWon = "Computer";
-        }
-        else if (computerSelection === "Paper") {
-        message = "You win! Scissors beats Paper.";
-        whoWon = "User";
-        }
-        else {
-        message = "You've tied! Scissors and Scissors tie."
-        whoWon = "Tie";
-        }
-    }
-
-    else {
-        message = "Did you spell something wrong?";
-        whoWon = "Tie";
-    }
 
     alert(message);
 
@@ -121,4 +61,70 @@ function game () {
         }
     }
 
+}
+
+document.getElementById("rockbtn").addEventListener("click", rock);
+
+function rock () {
+    computerPlay();
+
+    if (computerSelection === "Rock") {
+        message = "You've tied! Rock and Rock tie.";
+        whoWon = "Tie";
+    }
+    else if (computerSelection === "Paper") {
+        message = "You lose! Paper beats rock.";
+        whoWon = "Computer";
+    }
+    else {
+        message = "You win! Rock beats scissors.";
+        whoWon = "User";
+    }
+
+    console.log(message);
+    console.log(whoWon);
+}
+
+document.getElementById("paperbtn").addEventListener("click", paper);
+
+function paper () {
+    computerPlay();
+
+    if (computerSelection === "Rock") {
+        message = "You win! Paper beats rock.";
+        whoWon = "User";
+    }
+    else if (computerSelection === "Paper") {
+        message = "You've tied! Paper and Paper tie.";
+        whoWon = "Tie";
+    }
+    else {
+        message = "You lose! Scissors beats paper.";
+        whoWon = "Computer";
+    }
+
+    console.log(message);
+    console.log(whoWon);
+}
+
+document.getElementById("scissorsbtn").addEventListener("click", scissors)
+
+function scissors () {
+    computerPlay();
+
+    if (computerSelection === "Rock") {
+        message = "You lose! Rock beats Scissors.";
+        whoWon = "Computer";
+    }
+    else if (computerSelection === "Paper") {
+    message = "You win! Scissors beats Paper.";
+    whoWon = "User";
+    }
+    else {
+    message = "You've tied! Scissors and Scissors tie."
+    whoWon = "Tie";
+    }
+
+    console.log(message);
+    console.log(whoWon);
 }
