@@ -20,48 +20,9 @@ function computerPlay () {
 }
 
 let message;
-let playerInput;
 let whoWon;
-
-function playRound () {
-
-    computerPlay();
-
-    alert(message);
-
-    return whoWon;
-
-}
-
-function game () {
-
-    let userScore = 0;
-    let computerScore = 0;
-
-    function points () {
-        if (whoWon === "User") {
-            userScore = userScore + 1;
-        }
-        else if (whoWon === "Computer") {
-            computerScore = computerScore + 1;
-        }
-
-        return [userScore, computerScore];
-    }
-
-    function finalResult () {
-        if (userScore > computerScore) {
-            alert("YOU WON!");
-        }
-        else if (computerScore > userScore) {
-            alert("You lost :(");
-        }
-        else {
-            alert("Wow, you tied! That's unlikely.");
-        }
-    }
-
-}
+let userScore = 0;
+let computerScore = 0;
 
 document.getElementById("rockbtn").addEventListener("click", rock);
 
@@ -81,8 +42,17 @@ function rock () {
         whoWon = "User";
     }
 
-    console.log(message);
-    console.log(whoWon);
+    document.getElementById("results").innerHTML = message;
+
+    if (whoWon === "User") {
+        userScore = userScore + 1;
+        document.getElementById("userscoredisplay").innerHTML = userScore;
+    } 
+    else if (whoWon === "Computer") {
+        computerScore = computerScore + 1;
+        document.getElementById("computerscoredisplay").innerHTML = computerScore;
+    }
+    document.getElementById("results").innerHTML = message;
 }
 
 document.getElementById("paperbtn").addEventListener("click", paper);
@@ -103,8 +73,16 @@ function paper () {
         whoWon = "Computer";
     }
 
-    console.log(message);
-    console.log(whoWon);
+    document.getElementById("results").innerHTML = message;
+
+    if (whoWon === "User") {
+        userScore = userScore + 1;
+        document.getElementById("userscoredisplay").innerHTML = userScore;
+    } 
+    else if (whoWon === "Computer") {
+        computerScore = computerScore + 1;
+        document.getElementById("computerscoredisplay").innerHTML = computerScore;
+    }
 }
 
 document.getElementById("scissorsbtn").addEventListener("click", scissors)
@@ -125,6 +103,14 @@ function scissors () {
     whoWon = "Tie";
     }
 
-    console.log(message);
-    console.log(whoWon);
+    document.getElementById("results").innerHTML = message;
+
+    if (whoWon === "User") {
+        userScore = userScore + 1;
+        document.getElementById("userscoredisplay").innerHTML = userScore;
+    } 
+    else if (whoWon === "Computer") {
+        computerScore = computerScore + 1;
+        document.getElementById("computerscoredisplay").innerHTML = computerScore;
+    }
 }
