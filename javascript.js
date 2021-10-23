@@ -42,8 +42,6 @@ function rock () {
         whoWon = "User";
     }
 
-    document.getElementById("results").innerHTML = message;
-
     if (whoWon === "User") {
         userScore = userScore + 1;
         document.getElementById("userscoredisplay").innerHTML = userScore;
@@ -52,6 +50,14 @@ function rock () {
         computerScore = computerScore + 1;
         document.getElementById("computerscoredisplay").innerHTML = computerScore;
     }
+
+    if (userScore === 5) {
+        message = "You've won the whole round!";
+    }
+    else if (computerScore === 5) {
+        message = "The computer has won this round!";
+    }
+
     document.getElementById("results").innerHTML = message;
 }
 
@@ -73,8 +79,6 @@ function paper () {
         whoWon = "Computer";
     }
 
-    document.getElementById("results").innerHTML = message;
-
     if (whoWon === "User") {
         userScore = userScore + 1;
         document.getElementById("userscoredisplay").innerHTML = userScore;
@@ -83,6 +87,15 @@ function paper () {
         computerScore = computerScore + 1;
         document.getElementById("computerscoredisplay").innerHTML = computerScore;
     }
+
+    if (userScore === 5) {
+        message = "You've won the whole round!";
+    }
+    else if (computerScore === 5) {
+        message = "The computer has won this round!";
+    }
+
+    document.getElementById("results").innerHTML = message;
 }
 
 document.getElementById("scissorsbtn").addEventListener("click", scissors)
@@ -103,8 +116,6 @@ function scissors () {
     whoWon = "Tie";
     }
 
-    document.getElementById("results").innerHTML = message;
-
     if (whoWon === "User") {
         userScore = userScore + 1;
         document.getElementById("userscoredisplay").innerHTML = userScore;
@@ -113,4 +124,13 @@ function scissors () {
         computerScore = computerScore + 1;
         document.getElementById("computerscoredisplay").innerHTML = computerScore;
     }
+
+    if (userScore === 5) {
+        message = "You've won the whole round!";
+    }
+    else if (computerScore === 5) {
+        message = "The computer has won this round!";
+    }
+
+    document.getElementById("results").innerHTML = message;
 }
